@@ -1,0 +1,307 @@
+/* Main Title */
+.speacall-content{
+    margin-left: 280px !important;
+    width: 126% ;
+}
+.title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1e3a5f;
+  margin-bottom: 20px;
+}
+
+/* Card Form Styling */
+.card {
+  border-radius: 12px;
+  border: 1px solid #e3e5e8;
+}
+
+.card h5 {
+  font-weight: 600;
+  color: #1e3a5f;
+}
+
+/* Form Labels */
+label {
+  font-weight: 600;
+  color: #1e3a5f;
+  font-size: 17px;
+  
+}
+
+/* Inputs */
+.form-control, 
+.form-select {
+  border-radius: 8px;
+  border: 1px solid #c9d2dd;
+  padding: 8px 12px;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: #1e3a5f;
+  box-shadow: 0 0 2px rgba(30, 58, 95, 0.3);
+}
+
+/* Register Button */
+.btn-outline-primary {
+  border: 1px solid #1e3a5f !important;
+  color: #1e3a5f !important;
+  font-weight: 600;
+  padding: 6px 18px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.btn-outline-primary:hover {
+  background-color: #1e3a5f !important;
+  color: white !important;
+}
+
+/* Table */
+.table {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.table thead {
+  background-color: #1e3a5f;
+  color: white;
+}
+
+.table th {
+  font-weight: 600;
+  font-size: 17px;
+  padding: 15px;
+  
+}
+
+.table tbody tr:hover {
+  background-color: #f3f6fa;
+}
+
+/* Print Button */
+.btn-sm.btn-outline-primary {
+  border: 1px solid #1e3a5f !important;
+  color: #1e3a5f !important;
+  border-radius: 6px;
+  padding: 4px 10px;
+  transition: 0.3s;
+}
+
+.btn-sm.btn-outline-primary:hover {
+  background-color: #1e3a5f !important;
+  color: white !important;
+}
+.Register{
+    background-color: #1e3a5f;
+    color: aliceblue;
+}
+.font1{
+    font-family: "DynaPuff", system-ui;
+}
+.btnview{
+  color: #1e3a5f;
+  border: 1px solid rgb(35, 35, 124);
+}
+.btnview :hover{
+  color: black;
+  border: 1px solid rgb(35, 35, 124);
+  /* background-color: #1e3a5f; */
+}
+.btnedit{
+  border: 1px solid #FAB12F;
+  color: #FAB12F;
+}
+.btnedit{
+  border: 1px solid #FAB12F;
+  color: #FAB12F;
+ 
+}
+
+.invoice-modal-dialog {
+    max-width: 800px;
+}
+
+.invoice-modal-content {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+}
+
+/* Modal Header */
+.invoice-header {
+    background: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+    color: white;
+    border-bottom: none;
+    padding: 1.5rem 2rem;
+}
+
+.modal-title {
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.btn-close-white {
+    filter: invert(1) grayscale(100%) brightness(200%);
+    opacity: 0.8;
+}
+
+.btn-close-white:hover {
+    opacity: 1;
+}
+
+/* Modal Body */
+.invoice-body {
+    background-color: #f8f9fa;
+}
+
+/* Invoice Header Section */
+.invoice-header-section {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* Cards */
+.card.border-light {
+    border: 1px solid #e9ecef !important;
+    border-radius: 8px;
+    transition: transform 0.2s;
+}
+
+.card.border-light:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.card-title {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Table */
+.invoice-table {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.invoice-table th {
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 1rem;
+}
+
+.invoice-table td {
+    padding: 1rem;
+    vertical-align: middle;
+}
+
+.invoice-table tfoot {
+    background-color: #f8f9fa;
+}
+
+/* Status Badge */
+.badge.bg-warning {
+    padding: 0.35rem 0.75rem;
+    font-weight: 600;
+}
+
+/* Thank You Section */
+.thank-you-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-left: 4px solid #4361ee;
+}
+
+/* Modal Footer */
+.invoice-footer {
+    background: white;
+    border-top: 1px solid #e9ecef;
+    padding: 1rem 2rem;
+}
+
+.btn-outline-secondary {
+    border-color: #dee2e6;
+    color: #6c757d;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #f8f9fa;
+    border-color: #adb5bd;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+    border: none;
+    padding: 0.5rem 1.5rem;
+    font-weight: 600;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #3a56d4 0%, #2d0a7d 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(67, 97, 238, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .invoice-modal-dialog {
+        margin: 1rem;
+        max-width: calc(100% - 2rem);
+    }
+    
+    .invoice-header, 
+    .invoice-footer {
+        padding: 1rem;
+    }
+    
+    .invoice-body {
+        padding: 1rem;
+    }
+    
+    .invoice-table th,
+    .invoice-table td {
+        padding: 0.75rem 0.5rem;
+    }
+}
+
+
+.modalwidth {
+    max-width: 100%; /* Default for mobile */
+}
+
+@media (min-width: 768px) {
+    .modalwidth {
+        max-width: 700px; /* For tablets and up */
+    }
+}
+
+@media (min-width: 992px) {
+    .modalwidth {
+        max-width: 900px; /* For desktops */
+        /* height: 1200px; */
+    }
+}
+.hide-scroll {
+  overflow-y: auto;
+
+  /* Firefox */
+  scrollbar-width: none;
+
+  /* IE & Edge */
+  -ms-overflow-style: none;
+}
+
+.hide-scroll::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+.bginvoice{
+  background-color: #1e3a5f !important;
+}

@@ -1,0 +1,57 @@
+/* Screen layout */
+.invoice-layout {
+  display: flex;
+}
+
+.invoice-content {
+  flex: 1;
+  padding: 20px;
+}
+
+/* Invoice A4 */
+.invoice-container {
+  width: 210mm;
+  min-height: 297mm;
+  margin: auto;
+  padding: 20mm;
+  background: white;
+  font-family: Arial, sans-serif;
+}
+
+/* Print button */
+.print-btn {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* 🖨 PRINT MODE */
+@media print {
+
+  /* ❌ Hide sidebar ONLY when printing */
+  .sidebar {
+    display: none !important;
+  }
+
+  .invoice-layout {
+    display: block;
+  }
+
+  .invoice-content {
+    padding: 0;
+  }
+
+  .invoice-container {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  .print-btn {
+    display: none;
+  }
+
+  body {
+    margin: 0;
+    background: white;
+  }
+}
