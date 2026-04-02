@@ -14,7 +14,7 @@ export default function EnrollmentChart() {
 useEffect(() => {
   const token = localStorage.getItem("token");
 
-  fetch("http://127.0.0.1:8000/api/admin/enrollment", {
+  fetch("https://laravel-api-enrollmentnew-main-m8wa07.free.laravel.cloud/api/admin/enrollment", {
     headers: {
       Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",

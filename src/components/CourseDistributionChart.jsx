@@ -23,7 +23,7 @@ export function CourseDistributionChart() {
   useEffect(() => {
     const token = localStorage.getItem("token");
 
-    fetch("http://127.0.0.1:8000/api/admin/enrollment", {
+    fetch("https://laravel-api-enrollmentnew-main-m8wa07.free.laravel.cloud/api/admin/enrollment", {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
@@ -31,16 +31,18 @@ export function CourseDistributionChart() {
     })
       .then((res) => res.json())
       .then((response) => {
-        const rows = response.data;
+        const rows = response.data || [];
+        console.log(rows)
 
         // 🔹 Group by course_name
         const courseMap = {};
 
-        rows.forEach((row) => {
-          const course = row.course_name || "Unknown";
+      rows.forEach((row) => {
+      const course =
+        row.course?.course_name || row.course_name || "Unknown";
 
-          courseMap[course] = (courseMap[course] || 0) + 1;
-        });
+      courseMap[course] = (courseMap[course] || 0) + 1;
+});
 
         // 🔹 Convert to PieChart format
         const chartData = Object.keys(courseMap).map((course, index) => ({

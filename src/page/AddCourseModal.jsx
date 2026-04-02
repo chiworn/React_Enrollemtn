@@ -20,11 +20,11 @@ export default function CourseManagement() {
   // Fetch courses
   const fetchCourses = async () => {
     try {
-      const res = await fetch("http://127.0.0.1:8000/api/admin/course", {
+      const res = await fetch("https://laravel-api-enrollmentnew-main-m8wa07.free.laravel.cloud/api/admin/course", {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
-      setOrders(data.Data || []);
+      setOrders(data.data || []);
     } catch (error) {
       console.error("Error fetching courses:", error);
     }
@@ -61,8 +61,8 @@ export default function CourseManagement() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const url = editingCourse
-      ? `http://127.0.0.1:8000/api/admin/course/${editingCourse.id}`
-      : "http://127.0.0.1:8000/api/admin/course";
+      ? `https://laravel-api-enrollmentnew-main-m8wa07.free.laravel.cloud/api/admin/course/${editingCourse.id}`
+      : "https://laravel-api-enrollmentnew-main-m8wa07.free.laravel.cloud/api/admin/course";
     const method = editingCourse ? "PUT" : "POST";
 
     try {
@@ -93,7 +93,7 @@ export default function CourseManagement() {
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this course?")) return;
     try {
-      await fetch(`http://127.0.0.1:8000/api/admin/course/${id}`, {
+      await fetch(`https://laravel-api-enrollmentnew-main-m8wa07.free.laravel.cloud/api/admin/course/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });

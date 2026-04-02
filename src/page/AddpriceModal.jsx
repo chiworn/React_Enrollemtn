@@ -16,23 +16,30 @@ export default function AddpriceModal() {
   }, []);
 
   // Fetch all prices
-  const fetchPrices = async () => {
-    try {
-      const res = await fetch("http://127.0.0.1:8000/api/admin/price", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      const data = await res.json();
-      setPrices(data.Data || []);
-    } catch (error) {
-      console.error("Error fetching prices:", error);
+const fetchPrices = async () => {
+  try {
+    const res = await fetch("https://laravel-api-enrollmentnew-main-m8wa07.free.laravel.cloud/api/admin/price", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!res.ok) {
+      throw new Error(`HTTP error! status: ${res.status}`);
     }
-  };
-  console.table(prices);
+
+    const data = await res.json();
+    setPrices(data.data || []);
+  } catch (error) {
+    console.error("Error fetching prices:", error);
+  }
+};
 
   // Handle input change
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: parseFloat(value) });
+    setFormData({ ...formData, [name]: value });
   };
 
   // Open modal for Add
@@ -45,7 +52,7 @@ export default function AddpriceModal() {
   // Open modal for Edit
   const handleEdit = (price) => {
     setEditingPrice(price);
-    setFormData({ price_course: price.price_course });
+    setFormData({ price_course: price.price_course.toString() });
     setShowModal(true);
   };
 
@@ -53,27 +60,35 @@ export default function AddpriceModal() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const url = editingPrice
-      ? `http://127.0.0.1:8000/api/admin/price/${editingPrice.id}`
-      : "http://127.0.0.1:8000/api/admin/price";
+      ? `https://laravel-api-enrollmentnew-main-m8wa07.free.laravel.cloud/api/admin/price/${editingPrice.id}`
+      : "https://laravel-api-enrollmentnew-main-m8wa07.free.laravel.cloud/api/admin/price";
     const method = editingPrice ? "PUT" : "POST";
 
     try {
+      const payload = {
+        ...formData,
+        price_course: parseFloat(formData.price_course)
+      };
+
       const res = await fetch(url, {
         method,
         headers: {
           "Content-Type": "application/json",
+          "Accept": "application/json",
            Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(payload),
       });
+
       const data = await res.json();
-      console.log("Server Response:", data);
 
       if (res.ok) {
         setShowModal(false);
         setEditingPrice(null);
         setFormData({ price_course: "" });
         fetchPrices();
+      } else {
+        alert(data.message || "Error saving price");
       }
     } catch (error) {
       console.error(error);
@@ -85,11 +100,19 @@ export default function AddpriceModal() {
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this price?")) return;
     try {
-      await fetch(`http://127.0.0.1:8000/api/admin/price/${id}`, {
+      const res = await fetch(`https://laravel-api-enrollmentnew-main-m8wa07.free.laravel.cloud/api/admin/price/${id}`, {
         method: "DELETE",
-        headers: { Authorization: `Bearer ${token}` },
+        headers: { 
+          Authorization: `Bearer ${token}`,
+          "Accept": "application/json"
+        },
       });
+      if (res.ok) {
       fetchPrices();
+      } else {
+        const data = await res.json();
+        alert(data.message || "Error deleting price");
+      }
     } catch (error) {
       console.error(error);
       alert("Error deleting price");
@@ -131,11 +154,11 @@ export default function AddpriceModal() {
               prices.map((price, index) => (
                 <tr key={price.id}>
                   <td>{index + 1}</td>
-                  <td>${price.price_course.toFixed(2)}</td>
+                  <td>${Number(price.price_course || 0).toFixed(2)}</td>
                   <td>{new Date(price.created_at).toLocaleDateString()}</td>
                   <td className="text-end">
                     <button
-                      className="btn btn-sm btn-outline-primary me-1 tittlebtn px-3 me-2"
+                      className="btn btn-sm btn-outline-primary tittlebtn px-3 me-2"
                       onClick={() => handleEdit(price)}
                     >
                       <i className="bi bi-pencil-fill me-2"></i>Edit

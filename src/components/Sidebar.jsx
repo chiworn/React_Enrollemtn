@@ -6,6 +6,14 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 export default function Sidebar() {
      const [open, setOpen] = useState(true)
+      const handleLogout = () => {
+    // remove user data
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+
+    // redirect to login page
+    navigate("/");
+  };
 const menuItems = [
   { label: "Dashboard", icon: <FontAwesomeIcon icon={faTachometerAlt} />, href: "/Dashboard" },
   { label: "Entrollment", icon: <FontAwesomeIcon icon={faUserGraduate} />, href: "/Entrollment" },
@@ -23,7 +31,7 @@ const menuItems = [
         <div className="sidebar-header mt-3  ">
           <div className="sidebar-logo">
             <span></span>
-            {open && <span className="logo-text ">ETEC CENTER</span>}
+            {open && <span className="logo-text fs-5">ETEC CENTER</span>}
              <p>building skill IT 2012</p>
            
           </div>
@@ -46,10 +54,19 @@ const menuItems = [
         </nav>
 
         <div className="sidebar-footer ">
-          <a href="#" className="nav-item logout" title="Logout">
-            <span className="nav-icon"><FontAwesomeIcon icon={faRightFromBracket} />  </span>
-            {open && <span className="nav-label fs-5 text-danger">Logout</span>}
-          </a>
+         <button
+        onClick={handleLogout}
+        className="nav-item logout border-0 bg-transparent"
+        title="Logout"
+      >
+        <span className="nav-icon">
+          <FontAwesomeIcon icon={faRightFromBracket} />
+        </span>
+
+        {open && (
+          <span className="nav-label fs-5 text-danger">Logout</span>
+        )}
+      </button>
         </div>
       </aside>
 

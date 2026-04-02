@@ -140,7 +140,7 @@ export default function Login() {
       e.preventDefault();
       console.log("Form data before fetch:", formData);
        try {
-      const res = await axios.post("http://127.0.0.1:8000/api/login", formData);
+      const res = await axios.post("https://laravel-api-enrollmentnew-main-m8wa07.free.laravel.cloud/api/login", formData);
 
       // Example response: { token: "...", user: {...} }
       const token = res.data.token;

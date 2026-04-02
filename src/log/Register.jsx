@@ -143,7 +143,7 @@ useEffect(() => {
     e.preventDefault();
     console.log("Form data before fetch:", formData);
     try {
-      const res = await axios.post("http://127.0.0.1:8000/api/register", formData);
+      const res = await axios.post("https://laravel-api-enrollmentnew-main-m8wa07.free.laravel.cloud/api`a/register", formData);
 
       console.log("Response from API:", res.data);
       Swal.fire({

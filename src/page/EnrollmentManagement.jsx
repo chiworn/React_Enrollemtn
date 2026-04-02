@@ -52,10 +52,10 @@ export default function EnrollmentManagement() {
   // Load dropdown data
   const loadDropdowns = async () => {
     const urls = {
-      c: "http://127.0.0.1:8000/api/admin/course",
-      t: "http://127.0.0.1:8000/api/admin/timeslots",
-      tr: "http://127.0.0.1:8000/api/admin/ternslot",
-      p: "http://127.0.0.1:8000/api/admin/price",
+      c: "https://laravel-api-enrollmentnew-main-m8wa07.free.laravel.cloud/api/admin/course",
+      t: "https://laravel-api-enrollmentnew-main-m8wa07.free.laravel.cloud/api/admin/timeslots",
+      tr: "https://laravel-api-enrollmentnew-main-m8wa07.free.laravel.cloud/api/admin/ternslot",
+      p: "https://laravel-api-enrollmentnew-main-m8wa07.free.laravel.cloud/api/admin/price",
     };
 
     const fetchData = async (url) =>
@@ -68,15 +68,15 @@ export default function EnrollmentManagement() {
       fetchData(urls.p),
     ]);
 
-    setCourses(courseData.Data || []);
-    setTimeslots(timeData.Data || []);
+    setCourses(courseData.data || []);
+    setTimeslots(timeData.data || []);
     setTerms(termData.data || []);
-    setPrices(priceData.Data || []);
+    setPrices(priceData.data || []);
   };
 
   const loadEnrollments = async () => {
     try {
-      const res = await fetch("http://127.0.0.1:8000/api/admin/enrollment", {
+      const res = await fetch("https://laravel-api-enrollmentnew-main-m8wa07.free.laravel.cloud/api/admin/enrollment", {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -96,8 +96,8 @@ export default function EnrollmentManagement() {
   e.preventDefault();
 
   const url = isEdit
-    ? `http://127.0.0.1:8000/api/admin/enrollment/${editId}`
-    : "http://127.0.0.1:8000/api/admin/enrollment";
+    ? `https://laravel-api-enrollmentnew-main-m8wa07.free.laravel.cloud/api/admin/enrollment/${editId}`
+    : "https://laravel-api-enrollmentnew-main-m8wa07.free.laravel.cloud/api/admin/enrollment";
 
   const method = isEdit ? "PUT" : "POST";
 
@@ -162,7 +162,7 @@ console.log("From EDIt",formData);
       console.log(id);
       // const token = localStorage.getItem("token"); // or whatever your auth method is
       try {
-         const res = await fetch(`http://127.0.0.1:8000/api/admin/enrollment/${id}`, {
+         const res = await fetch(`https://laravel-api-enrollmentnew-main-m8wa07.free.laravel.cloud/api/admin/enrollment/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
         Accept: "application/json",
@@ -382,7 +382,7 @@ console.log("From EDIt",formData);
                     <tbody>
                       <tr>
                         <td className="fw-semibold">{selectedInvoice.data.course_name}</td>
-                        <td className="text-muted">Term: {selectedInvoice.data.tern_day} • Timeslot: {selectedInvoice.data.start_time} - {selectedInvoice.data.end_time}</td>
+                        <td className="text-muted">Term: {selectedInvoice.data.termslot.tern_day} • Timeslot: {selectedInvoice.data.start_time} - {selectedInvoice.data.end_time}</td>
                         <td className="text-end fw-bold">{selectedInvoice.data.price_course} $</td>
                       </tr>
                     </tbody>
@@ -593,10 +593,10 @@ console.log("From EDIt",formData);
         </td>
         <td className="text-center ps-3">
           <div className="text-secondary">
-            {en.timeslot?.time_slot || `${en.start_time} - ${en.end_time}`}
+            {en.timeslot?.time_slot || `${en.timeslot.start_time} - ${en.timeslot.end_time}`}
           </div>
           <small className="ms-1 text-success">
-            {en.term?.term_day || en.tern_day}
+            {en.termslot?.term_day || en.termslot.tern_day}
           </small>
         </td>
         <td className="text-secondary pt-3">

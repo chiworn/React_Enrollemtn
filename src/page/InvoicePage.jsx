@@ -10,7 +10,7 @@ export default function InvoicePage() {
   const token = localStorage.getItem("token");
   
   useEffect(() => {
-    fetch(`http://127.0.0.1:8000/api/admin/enrollment/${id}`, {
+    fetch(`https://laravel-api-enrollmentnew-main-m8wa07.free.laravel.cloud/api/admin/enrollment/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

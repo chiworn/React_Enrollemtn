@@ -22,7 +22,7 @@ export default function AddtermModal() {
   const fetchTerms = async () => {
     const token = localStorage.getItem("token");
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/admin/ternslot", {
+      const response = await fetch("https://laravel-api-enrollmentnew-main-m8wa07.free.laravel.cloud/api/admin/ternslot", {
         method: "GET",
         headers: {
           "Authorization": `Bearer ${token}`,
@@ -42,7 +42,7 @@ export default function AddtermModal() {
   const fetchTimeClasses = async () => {
     const token = localStorage.getItem("token");
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/admin/timeslots", {
+      const response = await fetch("https://laravel-api-enrollmentnew-main-m8wa07.free.laravel.cloud/api/admin/timeslots", {
         method: "GET",
         headers: {
           "Authorization": `Bearer ${token}`,
@@ -66,7 +66,7 @@ export default function AddtermModal() {
   try {
     if (editingTerm) {
       // UPDATE existing term
-      const response = await fetch(`http://127.0.0.1:8000/api/admin/ternslot/${editingTerm.id}`, {
+      const response = await fetch(`https://laravel-api-enrollmentnew-main-m8wa07.free.laravel.cloud/api/admin/ternslot/${editingTerm.id}`, {
         method: "PUT",
         headers: {
           "Authorization": `Bearer ${token}`,
@@ -78,7 +78,7 @@ export default function AddtermModal() {
       setEditingTerm(null); // clear editing state
     } else {
       // ADD new term
-      const response = await fetch("http://127.0.0.1:8000/api/admin/ternslot", {
+      const response = await fetch("https://laravel-api-enrollmentnew-main-m8wa07.free.laravel.cloud/api/admin/ternslot", {
         method: "POST",
         headers: {
           "Authorization": `Bearer ${token}`,
@@ -103,8 +103,8 @@ export default function AddtermModal() {
 
   try {
     const url = editingTime
-      ? `http://127.0.0.1:8000/api/admin/timeslots/${editingTime.id}` // UPDATE
-      : "http://127.0.0.1:8000/api/admin/timeslots";                 // ADD
+      ? `https://laravel-api-enrollmentnew-main-m8wa07.free.laravel.cloud/api/admin/timeslots/${editingTime.id}` // UPDATE
+      : "https://laravel-api-enrollmentnew-main-m8wa07.free.laravel.cloud/api/admin/timeslots";                 // ADD
 
     const method = editingTime ? "PUT" : "POST";
 
@@ -141,7 +141,7 @@ export default function AddtermModal() {
   if (!window.confirm("Are you sure you want to delete this term day?")) return;
 
   try {
-    const response = await fetch(`http://127.0.0.1:8000/api/admin/ternslot/${id}`, {
+    const response = await fetch(`https://laravel-api-enrollmentnew-main-m8wa07.free.laravel.cloud/api/admin/ternslot/${id}`, {
       method: "DELETE",
       headers: {
         "Authorization": `Bearer ${token}`,
@@ -163,7 +163,7 @@ export default function AddtermModal() {
   if (!confirm("Are you sure you want to delete this time class?")) return;
 
   try {
-    await fetch(`http://127.0.0.1:8000/api/admin/timeslots/${id}`, {
+    await fetch(`https://laravel-api-enrollmentnew-main-m8wa07.free.laravel.cloud/api/admin/timeslots/${id}`, {
       method: "DELETE",
       headers: {
         "Authorization": `Bearer ${token}`,
